@@ -2,11 +2,14 @@ const Koa = require('koa');
 const bodyparser = require('koa-bodyparser');
 
 const routerFn = require('./middleware/router');
+const email = require('./middleware/email');
 const router = routerFn();
 const errMap = require('./config/errorMsg.config');
-const app = new Koa();
 
+const app = new Koa();
 const PORT = 1277;
+email(app);
+
 app.use(async (ctx, next) => {
   try {
     await next();

@@ -1,7 +1,8 @@
 const Order = require('../model/order');
+const User = require('../model/user');
 
 const commit = async (ctx, next) => {
-  const { address, tel, content, openid,index } = ctx.request.body;
+  const { address, tel, content, openid, index } = ctx.request.body;
   console.log(ctx.request.body);
   const order = new Order({
     address,
@@ -12,6 +13,11 @@ const commit = async (ctx, next) => {
   });
   try {
     await order.save();
+
+    const list = await User.find({});
+    list.forEach(item => {
+      ctx.sendMsg(item.email, ctx.request.body);
+    });
     ctx.body = {
       code: 0,
       data: order
@@ -19,7 +25,7 @@ const commit = async (ctx, next) => {
   } catch (error) {
 
     console.log(error);
-    
+
     ctx.throw(410);
   }
 };
