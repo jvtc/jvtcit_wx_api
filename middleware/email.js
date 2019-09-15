@@ -1,4 +1,4 @@
-const { host, port, service, secure, user, pass } = require('../config/sms.config')
+const { host, port, service, secure,secureConnection, user, pass } = require('../config/sms.config')
 const nodemailer = require('nodemailer');
 
 /**
@@ -12,6 +12,7 @@ const smtpTransport = nodemailer.createTransport({
   port,
   secure,
   service,
+  secureConnection,
   auth: {
     user,
     pass
