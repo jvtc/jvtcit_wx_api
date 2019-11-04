@@ -16,7 +16,7 @@
     "koa-bodyparser": "^4.2.1",
     "koa-jwt": "^3.5.1",
     "koa-router": "^7.4.0",
-    "mongoose": "^5.6.0",
+    "mongoose": "^5.7.5",
     "nodemailer": "^6.3.0",
     "nodemailer-smtp-transport": "^2.7.4",
     "request": "^2.88.0"
